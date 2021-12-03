@@ -16,7 +16,7 @@ namespace AdventOfCode2021
 
             SonarSweep sonar = new SonarSweep(sonarInput);
 
-            Console.WriteLine(sonar.CalculateSlidingWindowDepthIncrease());
+            Console.WriteLine(sonar.CalculateIncrease(3));
             Console.Read();
         }
     }

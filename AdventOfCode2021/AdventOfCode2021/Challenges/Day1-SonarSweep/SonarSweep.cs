@@ -10,42 +10,17 @@ namespace AdventOfCode2021.Challenges.Day1_SonarSweep
             m_input = input;
         }
 
-        public int CalculateDepthIncrease()
+        public int CalculateIncrease(int chunkSize)
         {
             int depthIncreaseCount = 0;
+            var prevChunkSum = 0;
 
-            for (int i = 0; i < m_input.Count; i++)
+            for (int i = 1; i <= m_input.Count - chunkSize; i++)
             {
-                if (i == 0) continue;
+                prevChunkSum = m_input.GetRange(i - 1, chunkSize).Sum();
+                var currentChunkSum = m_input.GetRange(i, chunkSize).Sum();
 
-                var prevDepth = m_input[i - 1];
-                var currentDepth = m_input[i];
-
-                if (currentDepth > prevDepth)
-                {
-                    depthIncreaseCount++;
-                }
-
-            }
-
-            return depthIncreaseCount;
-        }
-
-        public int CalculateSlidingWindowDepthIncrease()
-        {
-            int depthIncreaseCount = 0;
-
-            for (int i = 0; i < m_input.Count - 2; i++)
-            {
-                if (i == 0) continue;
-
-                var prevChunkSum = m_input.GetRange(i - 1, 3).Sum();
-                var currentChunkSum = m_input.GetRange(i, 3).Sum();
-
-                if (currentChunkSum > prevChunkSum)
-                {
-                    depthIncreaseCount++;
-                }
+                if (currentChunkSum > prevChunkSum) depthIncreaseCount++;
             }
 
             return depthIncreaseCount;

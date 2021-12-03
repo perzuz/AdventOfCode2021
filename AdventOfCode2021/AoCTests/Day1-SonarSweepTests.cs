@@ -19,7 +19,7 @@ namespace AoCTests
 
             SonarSweep sonarSweep = new SonarSweep(input);
 
-            var actual = sonarSweep.CalculateDepthIncrease();
+            var actual = sonarSweep.CalculateIncrease(1);
 
             Assert.AreEqual(expected, actual);
         }
@@ -36,7 +36,7 @@ namespace AoCTests
 
             SonarSweep sonarSweep = new SonarSweep(input);
 
-            var actual = sonarSweep.CalculateSlidingWindowDepthIncrease();
+            var actual = sonarSweep.CalculateIncrease(3);
 
             Assert.AreEqual(expected, actual);
         }
